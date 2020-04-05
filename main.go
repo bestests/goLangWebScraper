@@ -13,7 +13,7 @@ func hadleHome(c echo.Context) error {
 	return c.File("home.html")
 }
 
-func handelScrape(c echo.Context) error {
+func handleScrape(c echo.Context) error {
 	search := strings.ToLower(scraper.CleanString(c.FormValue("search")))
 
 	fileNm := time.Now().Format("20060102150405") + "_indeed_" + search + ".csv"
@@ -32,7 +32,7 @@ func main() {
 
 	e.GET("/", hadleHome)
 
-	e.POST("/scrape", handelScrape)
+	e.POST("/scrape", handleScrape)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }
