@@ -27,7 +27,7 @@ func handelScrape(c echo.Context) error {
 }
 
 func main() {
-	//scraper.Scrape("python")
+
 	e := echo.New()
 
 	e.GET("/", hadleHome)
