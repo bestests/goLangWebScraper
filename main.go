@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"strings"
 	"time"
 
@@ -18,6 +19,9 @@ func handelScrape(c echo.Context) error {
 	fileNm := time.Now().Format("20060102150405") + "_indeed_" + search + ".csv"
 
 	scraper.Scrape(search, fileNm)
+
+	// 완료 후 삭제
+	defer os.Remove(fileNm)
 
 	return c.Attachment(fileNm, fileNm)
 }
